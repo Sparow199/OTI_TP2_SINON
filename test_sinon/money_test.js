@@ -5,16 +5,13 @@ QUnit.module("money", {
 
 QUnit.test("test construct money",function(assert)
 {
+    assert.expect(3);
 	var m=new money(1,"EUR");
 	assert.ok(m.v==1,"valeur = 1");
 	assert.equal(m.curr,"EUR","currency = EUR");
-
-    var m=new money(-1,"EUR");
-
     assert.throws(	function() {var m=new money(-1,"EUR");},
         NegativeValueIntroduced(-1),
         "Devises Incompatibles");
-
 }
 );
 
