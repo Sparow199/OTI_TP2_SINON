@@ -5,7 +5,7 @@ function DevisesIncompatibleExc(_d1,_d2) {
 
 DevisesIncompatibleExc.prototype.toString=function (){
 		return "Devises incompatibles : "+this.d1+" vs "+this.d2;
-}
+};
 
 
 function NegativeValueIntroduced(_d1) {
@@ -15,4 +15,27 @@ function NegativeValueIntroduced(_d1) {
 
 NegativeValueIntroduced.prototype.toString=function (){
     return "Impossible de créer ma monnaie la valeur : "+this.d1+" < 0";
+};
+
+
+//#
+function NonPositiveResultExc(_value1, _value2) {
+    this.value1 = _value1;
+    this.value2 = _value2;
+
 }
+
+NonPositiveResultExc.prototype.toString = function () {
+    return this.value1 + " is smaller than " + this.value2;
+};
+
+
+//#
+function UnexistingCurrencyException(_curr) {
+    this.curr = _curr;
+
+}
+
+UnexistingCurrencyException.prototype.toString = function () {
+    return "currency " + this.curr + " is unknown !";
+};
