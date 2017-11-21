@@ -93,12 +93,15 @@ QUnit.test("spy getValue / getCurrency", function(assert)
 });
 
 // QUnit.test("test money factory", function (assert) {
+//
 //         var factory = new MoneyFactory();
 //         var mf= sinon.spy(factory,"createMoney");
-//         sinon.assert.calledWith(mf, 1, "EUR");
+//     	assert.expect(1);
+//     	sinon.assert.calledWithExactly(mf,1, "EUR");
 //
 //     }
 // );
+
 //
 // //
 // // QUnit.test("test money factory fail", function (assert) {
