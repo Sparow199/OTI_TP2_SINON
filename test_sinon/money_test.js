@@ -88,23 +88,3 @@ QUnit.test("spy getValue / getCurrency", function (assert) {
     assert.ok(m1EUR_gc.calledOnce); //sinon.assert.calledOnce(m1EUR_gc);
 
 });
-
-// QUnit.test("test money factory", function (assert) {
-//
-//         var factory = new MoneyFactory();
-//         var mf= sinon.spy(factory,"createMoney");
-//     	assert.expect(1);
-//     	sinon.assert.calledWithExactly(mf,1, "EUR");
-//
-//     }
-// );
-
-//
-// //
-// // QUnit.test("test money factory fail", function (assert) {
-// //      var factory = new MoneyFactory();
-// //     	var mf= sinon.spy(factory,"createMoney")
-// // 	    factory.createMoney(1,DZD);
-// //     	sinon.assert.threw(mf, UnexistingCurrencyException);
-// //     }
-// // );

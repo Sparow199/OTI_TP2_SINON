@@ -39,3 +39,14 @@ function UnexistingCurrencyException(_curr) {
 UnexistingCurrencyException.prototype.toString = function () {
     return "currency " + this.curr + " is unknown !";
 };
+
+
+//#
+function IncorrectCurrencySizeExc(_curr, _size) {
+    this.curr = _curr;
+    this.size = _size;
+}
+
+IncorrectCurrencySizeExc.prototype.toString = function () {
+    return this.curr + ", incorrect currency size Expected size 3 found: " + this.size;
+};
