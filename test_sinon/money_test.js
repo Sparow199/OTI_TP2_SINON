@@ -13,7 +13,6 @@ QUnit.test("test construct money", function (assert) {
             },
             NegativeValueIntroduced(-1),
             "Devises Incompatibles");
-
         assert.throws(function () {
                 var m = new money(1, "DINAR");
             },
