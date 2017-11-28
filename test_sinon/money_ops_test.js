@@ -4,7 +4,7 @@ QUnit.module("moneyOps", {
 });
 
 QUnit.test("test simple add", function (assert) {
-        assert.expect(2);
+        assert.expect(1);
 
         var m1 = sinon.createStubInstance(money);
         var m2 = sinon.createStubInstance(money);
@@ -18,7 +18,7 @@ QUnit.test("test simple add", function (assert) {
         sinon.stub(m3, "getCurrency").returns("EUR");
 
         assert.ok(m3.equals(MoneyOps.add(m1, m2)), "3e = 1e+2e");
-        assert.deepEqual(m3, MoneyOps.add(m1, m2), "3e = 1e+2e deepEqual");
+//        assert.deepEqual(m3, MoneyOps.add(m1, m2), "3e = 1e+2e deepEqual");
     }
 );
 
@@ -42,7 +42,7 @@ QUnit.test("test multi devise add", function (assert) {
 
 
 QUnit.test("test simple sub", function (assert) {
-        assert.expect(2);
+        assert.expect(1);
 
         var m1 = sinon.createStubInstance(money);
         var m2 = sinon.createStubInstance(money);
@@ -57,7 +57,7 @@ QUnit.test("test simple sub", function (assert) {
         sinon.stub(m3, "getCurrency").returns("EUR");
 
         assert.ok(m3.equals(MoneyOps.sub(m2, m1)), "1e = 2e-1e");
-        assert.deepEqual(m3, MoneyOps.sub(m2, m1), "1e = 2e-1e deepEqual");
+//        assert.deepEqual(m3, MoneyOps.sub(m2, m1), "1e = 2e-1e deepEqual");
     }
 );
 
