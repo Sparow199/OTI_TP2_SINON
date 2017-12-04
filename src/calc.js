@@ -7,11 +7,13 @@ calc.prototype.displayResult = function (resultDiv) {
 };
 
 calc.prototype.computeResult = function (form) {
+
+  try {
+
     var m1 = new money(parseInt(form.elements['v1'].value),
         form.elements['c1'].value);
     var m2 = new money(parseInt(form.elements['v2'].value),
         form.elements['c2'].value);
-
     var ops = form.elements['ops'].value;
 
 
@@ -34,8 +36,12 @@ calc.prototype.computeResult = function (form) {
 
     } catch (e) {
         this.message = e.toString();
-
             }
+
+  } catch (e) {
+    this.message = e.toString();
+}
+
 };
 
 function doComputation(form, resDiv) {

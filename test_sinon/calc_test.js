@@ -104,3 +104,25 @@ QUnit.test("test_operations_incompatible", function (assert) {
         assert.equal(document.getElementById("res").innerHTML, "Unsupported operation BIA");
     }
 );
+
+QUnit.test("test_money_currency_and_size", function (assert) {
+
+        var fixture = "";
+        fixture += ("<div id='res'></div>");
+        fixture += ("<form id='form0'>");
+        fixture += ("<input type='text' id='v1' name='v1' value='2'/>");
+        fixture += ("<input type='text' id='c1' name='c1' value='dzdzdz'/>");
+        fixture += ("<input type='text' id='v2' name='v2' value='2'/>");
+        fixture += ("<input type='text' id='c2' name='c2' value='EU'/>");
+        fixture += ("<input type='text' id='ops' name='ops' value='SUB'/>");
+        fixture += ("</form>");
+        fixture += ("<div id='res'></div>");
+
+        var fixtureNode = document.getElementById("qunit-fixture");
+        fixtureNode.innerHTML = fixture;
+
+        var c = new calc();
+        c.computeResult(document.getElementById('form0'));
+        assert.equal(c.message, "dzdzdz, incorrect currency size Expected size 3 found: 6");
+    }
+);
