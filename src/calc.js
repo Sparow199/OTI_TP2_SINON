@@ -26,6 +26,10 @@ calc.prototype.computeResult = function (form) {
                 var resSub = MoneyOps.sub(m1, m2);
                 this.message = "Result : " + (resSub.toString()) + "";
                 break;
+            default:
+                this.message = "Unsupported operation "+ops+ "";
+                alert(this.message);
+                break;
                 }
 
     } catch (e) {
