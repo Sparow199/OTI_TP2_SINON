@@ -126,3 +126,34 @@ QUnit.test("test_money_unexiting_currency", function (assert) {
         assert.equal(c.message, "currency DZD is unknown !");
     }
 );
+
+
+QUnit.test("test_alert_spy", function (assert) {
+
+        window.alert=function(s){
+          document.getElementById("res").innerHTML=s;
+        }
+
+        var fixture = "";
+        fixture += ("<form id='form0'>");
+        fixture += ("<input type='text' id='v1' name='v1' value='2'/>");
+        fixture += ("<input type='text' id='c1' name='c1' value='EUR'/>");
+        fixture += ("<input type='text' id='v2' name='v2' value='2'/>");
+        fixture += ("<input type='text' id='c2' name='c2' value='EUR'/>");
+        fixture += ("<input type='text' id='ops' name='ops' value='BOB'/>");
+        fixture += ("</form>");
+        fixture += ("<div id='res'></div>");
+
+        var fixtureNode = document.getElementById("qunit-fixture");
+        fixtureNode.innerHTML = fixture;
+
+        var testalert = sinon.spy(window,"alert");
+
+        var c = new calc();
+        c.computeResult(document.getElementById('form0'))
+        assert.ok(window.alert.calledOnce);
+        assert.equal(document.getElementById("res").innerHTML, "Unsupported operation BOB");
+
+
+    }
+);
