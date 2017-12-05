@@ -40,11 +40,17 @@ and open the template in the editor.
             </tr>
             <tr>
                <td colspan='5' align='right'>
-                   <input type='button' value='calculer'
-                       onclick="javascript:doComputation(document.getElementById('form0'),document.getElementById('res'));"/>
+                   <input id="btn" type='button' value='calculer'/>
                </td>
             </tr>
     </table>
     <form>
+      <script>
+          var instanceOfcalc = new calc(); // only you know how to correctly initialize this
+          var button = document.getElementById('btn');
+          button.addEventListener('click', function () {
+            instanceOfcalc.doComputation(document.getElementById('form0'),document.getElementById('res'));
+          });
+      </script>
 </body>
 </html>

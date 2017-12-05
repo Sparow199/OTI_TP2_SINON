@@ -8,20 +8,18 @@ calc.prototype.displayResult = function (resultDiv) {
 
 calc.prototype.computeResult = function (form) {
 
-  try {
+try {
 
- var factory = new MoneyFactory();
+    var factory = new MoneyFactory();
 
     var m1 = factory.createMoney(parseInt(form.elements['v1'].value),
         form.elements['c1'].value);
 
     var m2 = factory.createMoney(parseInt(form.elements['v2'].value),
         form.elements['c2'].value);
-        
+
     var ops = form.elements['ops'].value;
 
-
-    try {
         switch (ops) {
 
             case "ADD":
@@ -33,14 +31,9 @@ calc.prototype.computeResult = function (form) {
                 this.message = "Result : " + (resSub.toString()) + "";
                 break;
             default:
-                this.message = "Unsupported operation "+ops+ "";
-                alert(this.message);
+                window.alert("Unsupported operation "+ops+ "");
                 break;
                 }
-
-    } catch (e) {
-        this.message = e.toString();
-            }
 
   } catch (e) {
     this.message = e.toString();
@@ -48,8 +41,7 @@ calc.prototype.computeResult = function (form) {
 
 };
 
-function doComputation(form, resDiv) {
-    var c = new calc();
-    c.computeResult(form);
-    c.displayResult(resDiv);
-}
+calc.prototype.doComputation = function(form, resDiv) {
+    this.computeResult(form);
+    this.displayResult(resDiv);
+};

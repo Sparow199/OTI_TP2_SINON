@@ -40,7 +40,6 @@ QUnit.test("test negative value", function (assert) {
     }
 );
 
-
 QUnit.test("test currency size", function (assert) {
         assert.throws(function () {
             var m1EUR = new money(1, "DINAR");

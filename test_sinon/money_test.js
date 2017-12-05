@@ -57,7 +57,7 @@ QUnit.test("test equals", function (assert) {
 );
 
 QUnit.test("test equals avec sans stub", function (assert) {
-    assert.expect(2);
+    assert.expect(3);
 
     var m1eur = new money(1, "eur");
     sinon.stub(m1eur, "getValue").returns(1);
@@ -70,7 +70,15 @@ QUnit.test("test equals avec sans stub", function (assert) {
 
     assert.ok(m1eur.equals(m1EUR), "1 EUR égal à 1 EUR");
     assert.ok(m1EUR.equals(m1eur), "1 EUR égal à 1 eur");
-    // assert.deepEqual(m1eur, m1EUR);
+
+    m1EUR.getValue.restore();
+    m1EUR.getCurrency.restore();
+    m1EUR.toString.restore();
+
+    m1eur.getCurrency.restore();
+    m1eur.getValue.restore();
+
+    assert.deepEqual(m1eur, m1EUR);
 });
 
 QUnit.test("spy getValue / getCurrency", function (assert) {

@@ -13,12 +13,13 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'src/*.js',
-            'test_sinon/*.js'
+            'test_sinon/*.js',
+            'test/*.js'
         ],
 
 
         // list of files to exclude
-        exclude: ['test_sinon/money_test_suite.js'],
+        exclude: ['test_sinon/money_test_suite.js','test_sinon/qunit-composite.js','test_sinon/sinon-qunit-2.0.1.js','test/money_test_suite.js'],
 
 
         // preprocess matching files before serving them to the browser

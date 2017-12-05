@@ -128,8 +128,50 @@ QUnit.test("test_money_unexiting_currency", function (assert) {
 );
 
 
-QUnit.test("test_alert_spy", function (assert) {
+QUnit.test("test_negative_result", function (assert) {
 
+        var fixture = "";
+        fixture += ("<form id='form0'>");
+        fixture += ("<input type='text' id='v1' name='v1' value='1'/>");
+        fixture += ("<input type='text' id='c1' name='c1' value='EUR'/>");
+        fixture += ("<input type='text' id='v2' name='v2' value='2'/>");
+        fixture += ("<input type='text' id='c2' name='c2' value='EUR'/>");
+        fixture += ("<input type='text' id='ops' name='ops' value='SUB'/>");
+        fixture += ("</form>");
+        fixture += ("<div id='res'></div>");
+
+        var fixtureNode = document.getElementById("qunit-fixture");
+        fixtureNode.innerHTML = fixture;
+
+        var c = new calc();
+        c.doComputation(document.getElementById('form0'),document.getElementById('res'));
+        assert.equal(document.getElementById("res").innerHTML, "1 est plus petit que 2");
+    }
+);
+
+QUnit.test("test_incorect_currency_size", function (assert) {
+
+        var fixture = "";
+        fixture += ("<form id='form0'>");
+        fixture += ("<input type='text' id='v1' name='v1' value='1'/>");
+        fixture += ("<input type='text' id='c1' name='c1' value='DZDZ'/>");
+        fixture += ("<input type='text' id='v2' name='v2' value='2'/>");
+        fixture += ("<input type='text' id='c2' name='c2' value='EUR'/>");
+        fixture += ("<input type='text' id='ops' name='ops' value='SUB'/>");
+        fixture += ("</form>");
+        fixture += ("<div id='res'></div>");
+
+        var fixtureNode = document.getElementById("qunit-fixture");
+        fixtureNode.innerHTML = fixture;
+
+        var c = new calc();
+        c.doComputation(document.getElementById('form0'),document.getElementById('res'));
+        assert.equal(document.getElementById("res").innerHTML, "DZDZ, incorrect currency size Expected size 3 found: 4");
+    }
+);
+
+QUnit.test("test_alert_spy", function (assert) {
+        assert.expect(2);
         window.alert=function(s){
           document.getElementById("res").innerHTML=s;
         }
@@ -153,7 +195,5 @@ QUnit.test("test_alert_spy", function (assert) {
         c.computeResult(document.getElementById('form0'))
         assert.ok(window.alert.calledOnce);
         assert.equal(document.getElementById("res").innerHTML, "Unsupported operation BOB");
-
-
     }
 );

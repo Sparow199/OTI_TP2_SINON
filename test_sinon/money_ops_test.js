@@ -5,11 +5,11 @@ QUnit.module("moneyOps", {
 
 QUnit.test("test simple add", function (assert) {
         assert.expect(1);
-
         var m1 = sinon.createStubInstance(money);
         var m2 = sinon.createStubInstance(money);
         m1.getValue.returns(1);
         m1.getCurrency.returns("EUR");
+
         m2.getValue.returns(2);
         m2.getCurrency.returns("EUR");
 
@@ -18,7 +18,20 @@ QUnit.test("test simple add", function (assert) {
         sinon.stub(m3, "getCurrency").returns("EUR");
 
         assert.ok(m3.equals(MoneyOps.add(m1, m2)), "3e = 1e+2e");
-//        assert.deepEqual(m3, MoneyOps.add(m1, m2), "3e = 1e+2e deepEqual");
+
+        m1.getValue.restore();
+        m1.getCurrency.restore();
+        // m1.toString.restore();
+
+        m2.getValue.restore();
+        m2.getCurrency.restore();
+        // m2.toString.restore();
+
+        m3.getValue.restore();
+        m3.getCurrency.restore();
+        // m3.toString.restore();
+
+        // assert.deepEqual(m3, MoneyOps.add(m1, m2), "3e = 1e+2e deepEqual");
     }
 );
 
@@ -43,7 +56,6 @@ QUnit.test("test multi devise add", function (assert) {
 
 QUnit.test("test simple sub", function (assert) {
         assert.expect(1);
-
         var m1 = sinon.createStubInstance(money);
         var m2 = sinon.createStubInstance(money);
         m1.getValue.returns(1);
@@ -52,12 +64,24 @@ QUnit.test("test simple sub", function (assert) {
         m2.getCurrency.returns("EUR");
 
         var m3 = new money(1, "EUR");
-
         sinon.stub(m3, "getValue").returns(1);
         sinon.stub(m3, "getCurrency").returns("EUR");
 
         assert.ok(m3.equals(MoneyOps.sub(m2, m1)), "1e = 2e-1e");
-//        assert.deepEqual(m3, MoneyOps.sub(m2, m1), "1e = 2e-1e deepEqual");
+
+        m1.getValue.restore();
+        m1.getCurrency.restore();
+        // m1.toString.restore();
+
+        m2.getValue.restore();
+        m2.getCurrency.restore();
+        // m2.toString.restore();
+
+        m3.getValue.restore();
+        m3.getCurrency.restore();
+        // m3.toString.restore();
+
+        // assert.deepEqual(m3, MoneyOps.sub(m2, m1), "1e = 2e-1e deepEqual");
     }
 );
 
