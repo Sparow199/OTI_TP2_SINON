@@ -10,10 +10,14 @@ calc.prototype.computeResult = function (form) {
 
   try {
 
-    var m1 = new money(parseInt(form.elements['v1'].value),
+ var factory = new MoneyFactory();
+
+    var m1 = factory.createMoney(parseInt(form.elements['v1'].value),
         form.elements['c1'].value);
-    var m2 = new money(parseInt(form.elements['v2'].value),
+
+    var m2 = factory.createMoney(parseInt(form.elements['v2'].value),
         form.elements['c2'].value);
+        
     var ops = form.elements['ops'].value;
 
 
